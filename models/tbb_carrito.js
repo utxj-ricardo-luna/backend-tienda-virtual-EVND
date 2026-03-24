@@ -14,10 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   tbb_carrito.init({
-    id_usuario:{
-      type:DataTypes.INTEGER,
-      allowNull:false
-    }, 
     total:{
       type:DataTypes.DECIMAL(10,2),
       allowNull:false
@@ -27,12 +23,32 @@ module.exports = (sequelize, DataTypes) => {
       allowNull:false
     }, 
     fecha_creacion:{
-      TYPE:DataTypes.DATE,
+      type:DataTypes.DATE,
       allowNull:false
     }, 
+    id_usuario:{
+      type:DataTypes.INTEGER,
+      allowNull:false
+    }
   }, {
     sequelize,
     modelName: 'tbb_carrito',
   });
+    //-------------------------------------------------------------.
+  tbb_carrito.associate = function(models) {
+    // associations can be defined here
+    tbb_carrito.belongsTo(models.tbc_usuario,
+        {
+            as: 'tbc_usuario',
+            foreignKey: 'id_usuario',
+        }
+    );
+    tbb_carrito.hasMany(models.tbd_carrito_detalle,
+        {
+            as: 'tbd_carrito_detalle',
+            foreignKey: 'id_carrito_detalle',
+        }
+    );
+  };
   return tbb_carrito;
 };

@@ -47,5 +47,16 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'tbc_usuario',
   });
+     //-------------------------------------------------------------.
+  tbc_usuario.associate = function(models) {
+    // associations can be defined here
+    tbc_usuario.hasMany(models.tbb_carrito,
+        {
+            as: 'tbb_carrito',
+            foreignKey: 'id_usuario',
+        }
+    );
+  };
+  //-------------------------------------------------------------
   return tbc_usuario;
 };
