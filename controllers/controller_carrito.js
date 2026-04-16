@@ -1,0 +1,60 @@
+const Sequelize = require('sequelize');
+const db = require('../models');
+const carrito = db.tbb_carrito;
+
+module.exports = {
+    create(req, res){
+        return carrito.create(
+            {
+                total: req.body.total,
+                estado: req.body.estado,
+                fecha_creacion: req.body.fecha_creacion,
+                id_usuario: req.body.id_usuario,
+            }
+        )
+        .then(carrito=>res.status(200).send(carrito))
+        //.then(()=>res.status(200).send({message: "Dato creado correctamente"}))
+        .catch(error => res.status(400).send(error))
+    },
+    list(_, res){
+        return carrito.findAll({})
+            .then(carrito => res.status(200).send(carrito))
+            .catch(error => res.status(400).send(error))
+    },
+    find (req, res){
+        return carrito.findAll({
+            where: {
+                id: req.params.id,
+            }
+        })
+        .then(carrito => res.status(200).send(carrito))
+        .catch(error => res.status(400).send(error))
+    },
+    delete(req, res){
+        return carrito.destroy({
+            where:{
+                id:req.params.id
+            }
+        })
+        .then(() => res.status(200).send({mensaje:"Datos eliminados"+
+            " correctamente"}))
+        .catch(error => res.status(400).send(error))
+    },
+    update(req, res){
+        return carrito.update(
+            {
+                total: req.body.total,
+                estado: req.body.estado,
+                fecha_creacion: req.body.fecha_creacion,
+                id_usuario: req.body.id_usuario,
+            },
+            {
+                where: {
+                    id:req.params.id
+                }
+            }
+        )
+        .then(() => res.status(200).send({mensaje:"Datos actualizados correctamente"}))
+        .catch(error => res.status(400).send(error))
+    }
+};

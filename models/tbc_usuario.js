@@ -46,6 +46,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'tbc_usuario',
+    tableName: 'tbc_usuario',
+    freezeTableName: true
   });
      //-------------------------------------------------------------.
   tbc_usuario.associate = function(models) {

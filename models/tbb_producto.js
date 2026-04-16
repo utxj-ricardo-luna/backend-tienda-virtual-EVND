@@ -21,7 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     descripcion:{
       type:DataTypes.STRING(150),
       allowNull:false
-    }, 
+    },
+    imagen:{
+      type:DataTypes.STRING(250),
+      allowNull:false
+    },
     precio:{
       type:DataTypes.DECIMAL(10,2),
       allowNull:false
@@ -37,6 +41,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'tbb_producto',
+    tableName: 'tbb_producto',
+    freezeTableName: true
+    
   });
   //-------------------------------------------------------------.
   tbb_producto.associate = function(models) {

@@ -2,9 +2,9 @@
   "development": {
     "username": "root",
     "password": "1234",
-    "database": "dbtiendavirtual",
+    "database": "db_tiendavirtual",
     "host": "127.0.0.1",
-    "port": "3307",
+    "port": "3308",
     "dialect": "mysql"
   },
   "test": {

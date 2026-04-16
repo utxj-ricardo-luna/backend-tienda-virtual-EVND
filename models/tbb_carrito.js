@@ -33,6 +33,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'tbb_carrito',
+    tableName: 'tbb_carrito',
+    freezeTableName: true
   });
     //-------------------------------------------------------------.
   tbb_carrito.associate = function(models) {

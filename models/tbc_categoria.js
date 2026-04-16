@@ -21,6 +21,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'tbc_categoria',
+    tableName: 'tbc_categoria',
+    freezeTableName: true
   });
 
    //-------------------------------------------------------------.
